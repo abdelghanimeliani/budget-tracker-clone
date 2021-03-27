@@ -1,3 +1,4 @@
+import 'package:budget_tracker_ui/json/daily_json.dart';
 import 'package:budget_tracker_ui/json/day_month.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -87,14 +88,14 @@ class _DailyPageState extends State<DailyPage> {
                                       border: Border.all(
                                           color: activeDay == index
                                               ? primary
-                                              : black.withOpacity(0.1))),
+                                              : black.withOpacity(0.5))),
                                   child: Center(
                                     child: Text(
                                       days[index]["day"],
                                       style: TextStyle(
                                           color: activeDay == index
                                               ? white
-                                              : black.withOpacity(0.1),
+                                              : black,
                                           fontSize: 10),
                                     ),
                                   ),
@@ -107,6 +108,127 @@ class _DailyPageState extends State<DailyPage> {
                 ],
               ),
             )),
+        SizedBox(
+          height: 30,
+        ),
+        Padding(
+          padding: const EdgeInsets.only(left: 20, right: 20),
+          child: Column(
+            children: List.generate(daily.length, (index) {
+              return Column(
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Container(
+                        width: (size.width - 40) * 0.7,
+                        child: Row(
+                          children: [
+                            Container(
+                              width: 50,
+                              height: 50,
+                              decoration: BoxDecoration(
+                                shape: BoxShape.circle,
+                                color: grey.withOpacity(0.1),
+                              ),
+                              child: Center(
+                                child: Image.asset(
+                                  daily[index]['icon'],
+                                  width: 30,
+                                  height: 30,
+                                ),
+                              ),
+                            ),
+                            SizedBox(width: 15),
+                            Container(
+                              width: (size.width - 90) * 0.5,
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    daily[index]['name'],
+                                    style: TextStyle(
+                                        fontSize: 15,
+                                        color: black,
+                                        fontWeight: FontWeight.w500),
+                                    overflow: TextOverflow.ellipsis,
+                                  ),
+                                  SizedBox(height: 5),
+                                  Text(
+                                    daily[index]['date'],
+                                    style: TextStyle(
+                                        fontSize: 15,
+                                        color: black,
+                                        fontWeight: FontWeight.w400),
+                                    overflow: TextOverflow.ellipsis,
+                                  ),
+                                ],
+                              ),
+                            )
+                          ],
+                        ),
+                      ),
+                      Container(
+                        width: (size.width - 40) * 0.3,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: [
+                            Text(
+                              daily[index]['price'],
+                              style: TextStyle(
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: 15,
+                                  color: Colors.green),
+                            ),
+                          ],
+                        ),
+                      )
+                    ],
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 65, top: 8),
+                    child: Divider(
+                      thickness: 0.8,
+                    ),
+                  )
+                ],
+              );
+            }),
+          ),
+        ),
+        SizedBox(
+          height: 15,
+        ),
+        Padding(
+          padding: const EdgeInsets.only(left: 20, right: 20),
+          child: Row(
+            children: [
+              Spacer(),
+              Padding(
+                padding: const EdgeInsets.only(right: 80),
+                child: Text(
+                  "Total",
+                  style: TextStyle(
+                      fontSize: 16,
+                      color: black.withOpacity(0.4),
+                      fontWeight: FontWeight.w600),
+                  overflow: TextOverflow.ellipsis,
+                ),
+              ),
+              Spacer(),
+              Padding(
+                padding: const EdgeInsets.only(top: 5),
+                child: Text(
+                  "\$1780.00",
+                  style: TextStyle(
+                      fontSize: 20, color: black, fontWeight: FontWeight.bold),
+                  overflow: TextOverflow.ellipsis,
+                ),
+              ),
+            ],
+          ),
+        )
       ]),
     );
   }

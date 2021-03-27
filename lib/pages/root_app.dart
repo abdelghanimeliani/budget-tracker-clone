@@ -35,7 +35,7 @@ class _RootAppState extends State<RootApp> {
     return IndexedStack(
       index: pageIndex,
       children: [
-        DailyPage()
+        DailyPage(),
         Center(
           child: Text('Stats page'),
         ),
@@ -48,7 +48,6 @@ class _RootAppState extends State<RootApp> {
         Center(
           child: Text('Create Budget page'),
         ),
-        
       ],
     );
   }
