@@ -1,5 +1,6 @@
 import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
 import 'package:budget_tracker_ui/pages/budget.dart';
+import 'package:budget_tracker_ui/pages/create_budgert.dart';
 import 'package:budget_tracker_ui/pages/dayli_page.dart';
 import 'package:budget_tracker_ui/pages/profile_page.dart';
 import 'package:budget_tracker_ui/pages/state_page.dart';
@@ -41,11 +42,9 @@ class _RootAppState extends State<RootApp> {
         DailyPage(),
         // i mean stats page
         StatePage(),
-        CreateBudgetPage(),
+        BudgetPage(),
         ProfilePage(),
-        Center(
-          child: Text('Create Budget page'),
-        ),
+        CreateBudgetPage(),
       ],
     );
   }
